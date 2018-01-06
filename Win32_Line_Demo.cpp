@@ -123,8 +123,15 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+	static int	cxClient, cyClient;
+	
     switch (message)
     {
+    case WM_SIZE:
+	    cxClient = LOWORD(lParam);
+	    cyClient = HIWORD(lParam);
+	    return	0;
+
     case WM_COMMAND:
         {
             int wmId = LOWORD(wParam);
@@ -147,6 +154,21 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
             // TODO: 在此处添加使用 hdc 的任何绘图代码...
+	//画矩形
+	Rectangle(hdc, cxClient / 8, cyClient / 8, cxClient * 7 / 8, cyClient * 7 / 8);
+	//画对角线
+	MoveToEx(hdc, 0, 0, NULL);
+	LineTo(hdc, cxClient, cyClient);
+
+	MoveToEx(hdc, 0, cyClient, NULL);
+	LineTo(hdc, cxClient, 0);
+	//画椭圆
+	Ellipse(hdc, cxClient / 8, cyClient / 8, cxClient * 7 / 8, cyClient * 7 / 8);
+	//画圆角矩形
+	RoundRect(hdc, cxClient / 4, cyClient / 4,
+		cxClient * 3 / 4, cyClient * 3 / 4,
+		cxClient / 4, cyClient / 4);
+
             EndPaint(hWnd, &ps);
         }
         break;

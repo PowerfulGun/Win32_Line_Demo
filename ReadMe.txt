@@ -4,6 +4,15 @@
 
 应用程序绘制一个矩形，一个椭圆，一个圆角矩形和两条直线。
 
+核心API函数：
+Rectangle(HDC,xStart,yStart,xEnd,yEnd)---画矩形
+
+LineTo(HDC,xEnd,yEnd)---画直线
+
+Ellipse(HDC,xStart,yStart,xEnd,yEnd)---画椭圆
+
+RoundRect(HDC,xStart,yStart,xEnd,yEnd,xCornerEllipse,yCornerEllipse)---画圆角矩形，xCornerEllipse是圆角的宽度，yCornerEllipse是圆角高度
+
 本文件概要介绍组成 Win32_Line_Demo 应用程序的每个文件的内容。
 
 

@@ -3,7 +3,7 @@
 ========================================================================
 
 应用程序绘制一个矩形，一个椭圆，一个圆角矩形和两条直线。
-
+![image](https://github.com/PowerfulGun/Win32_Line_Demo/blob/master/LineDemo.png)
 核心API函数：
 Rectangle(HDC,xStart,yStart,xEnd,yEnd)---画矩形
 
